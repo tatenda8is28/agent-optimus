@@ -1,0 +1,105 @@
+/* src/BookingPage.css */
+
+.booking-page-wrapper {
+    background-color: var(--section-bg-light);
+    min-height: 100vh;
+}
+
+/* --- MAIN CONTENT STYLES --- */
+.booking-page-wrapper main {
+    padding: 60px 0;
+}
+.page-intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.page-intro h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--heading-color);
+    margin-bottom: 4px;
+}
+.page-intro p {
+    font-size: 1.1rem;
+    color: var(--grey-text);
+}
+.booking-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr; /* Adjusted column ratio */
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* New Calendly Container Styles */
+.calendly-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    height: 700px; /* Give it a fixed height */
+    overflow: hidden;
+}
+
+/* Right-side Info Column */
+.onboarding-info {
+    padding: 20px 0;
+}
+.info-section {
+    margin-bottom: 50px;
+}
+.info-section:last-child {
+    margin-bottom: 0;
+}
+.onboarding-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 32px;
+}
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+.info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+    font-size: 1rem;
+    color: var(--grey-text);
+}
+.requirement-icon {
+    color: var(--primary-red);
+    background-color: #fce8e8;
+    font-size: 1.2rem;
+    margin-top: 4px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* New Setup Process Section Styles */
+.setup-process h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 4px;
+}
+.setup-process p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* --- RESPONSIVE FOR BOOKING PAGE --- */
+@media (max-width: 992px) {
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+    .calendly-container {
+        height: 650px; /* Adjust height for smaller screens */
+    }
+}

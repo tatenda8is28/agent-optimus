@@ -1,0 +1,72 @@
+/* src/CaseStudyPage.css */
+
+.case-study-page-wrapper {
+    background-color: var(--section-bg-light);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23e2e8f0" stroke-width="1" opacity="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+}
+
+/* --- MAIN CONTENT & HEADER --- */
+.case-study-page-wrapper main { padding: 80px 0; }
+.page-header { text-align: center; margin-bottom: 80px; }
+.page-header h1 { font-size: 3rem; font-weight: 900; color: var(--heading-color); margin-bottom: 16px; }
+.page-header p { font-size: 1.2rem; color: var(--grey-text); max-width: 700px; margin: 0 auto; }
+
+/* --- FEATURED CASE STUDY --- */
+.featured-case-study {
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; background: white;
+    border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    margin-bottom: 80px; overflow: hidden; border: 1px solid var(--grey-border); cursor: pointer;
+}
+.video-placeholder-featured {
+    aspect-ratio: 16 / 9; background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; position: relative;
+}
+.video-placeholder-featured .play-icon { font-size: 5rem; }
+.card-content-featured { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+.card-content-featured h3 { font-size: 2rem; font-weight: 800; color: var(--heading-color); margin-bottom: 16px; line-height: 1.2; }
+.card-content-featured p { font-size: 1.1rem; color: var(--grey-text); line-height: 1.6; }
+
+/* --- REGULAR CASE STUDY GRID --- */
+.case-study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.case-study-card {
+    background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column;
+    border: 1px solid transparent; cursor: pointer;
+}
+.case-study-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); border-color: var(--primary-red); }
+.video-placeholder {
+    aspect-ratio: 16 / 9; background-size: cover; background-position: center;
+    border-bottom: 1px solid var(--grey-border); display: flex; align-items: center; justify-content: center; position: relative;
+}
+.play-icon { font-size: 3.5rem; color: var(--primary-red); opacity: 0.8; transition: all 0.3s ease; position: absolute; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+.video-placeholder:hover .play-icon { opacity: 1; transform: scale(1.1); }
+.card-content { padding: 24px; flex-grow: 1; }
+.card-content h4 { font-size: 1.2rem; font-weight: 700; color: var(--heading-color); margin-bottom: 12px; }
+.card-content p { font-size: 0.95rem; color: var(--grey-text); line-height: 1.6; }
+.case-study-tag {
+    display: inline-block; background-color: var(--primary-blue); color: white; padding: 4px 12px;
+    border-radius: 12px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px;
+}
+.featured-tag { background-color: var(--primary-red); }
+
+/* --- FINAL CTA SECTION --- */
+.case-study-cta-section {
+    text-align: center; margin-top: 100px; padding: 60px 40px; background: white;
+    border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+.case-study-cta-section h2 { font-size: 2.2rem; font-weight: 800; color: var(--heading-color); margin-bottom: 16px; }
+.case-study-cta-section p { font-size: 1.1rem; color: var(--grey-text); margin-bottom: 32px; }
+.cta-button.primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 800;
+    font-size: 1.1rem; transition: all 0.3s ease; border: 3px solid transparent; cursor: pointer;
+    background: var(--gradient-primary); color: white; box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+}
+.cta-button.primary:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(220, 20, 60, 0.4); }
+
+/* NOTE: VIDEO MODAL STYLES HAVE BEEN REMOVED FROM HERE AS THEY ARE IN THEIR OWN FILE */
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) { .case-study-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 992px) { .featured-case-study { grid-template-columns: 1fr; } .card-content-featured { padding: 32px; text-align: center; } }
+@media (max-width: 768px) { .case-study-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.2rem; } }
