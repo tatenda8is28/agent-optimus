@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRocket, FaRobot, FaSearch, FaCalendarCheck, FaComments, FaChartBar, FaBrain, FaWhatsapp, FaPlayCircle } from 'react-icons/fa';
 import Header from './components/Header';
-import VideoModal from './components/VideoModal'; // Import the new reusable modal
+import VideoModal from './components/VideoModal';
+// CHANGE 1: Import the local hero image from your assets folder
+import heroImage from './assets/hero-image.png'; 
 
 // --- DATA ---
 const featuresData = [
-  // ... (feature data remains the same)
   { icon: <FaRobot />, title: "Intelligent Lead Qualification", description: "AI asks the right questions to identify serious buyers, sellers, and renters. No more wasted time on unqualified leads." },
   { icon: <FaSearch />, title: "Smart Property Search Engine", description: "Seamlessly connects to your Google Sheets listings and provides instant property matches based on client requirements." },
   { icon: <FaCalendarCheck />, title: "Automatic Appointment Booking", description: "Syncs directly with your Google Calendar to schedule viewings and meetings without any back-and-forth." },
@@ -16,7 +17,6 @@ const featuresData = [
   { icon: <FaBrain />, title: "Persistent Memory System", description: "Remembers every client interaction for natural, context-aware conversations that build long-term relationships." }
 ];
 
-// Updated showcase data with YouTube Video IDs
 const showcaseData = [
   { title: "Instant Lead Engagement", description: "See how the AI engages and qualifies a new lead in under 60 seconds.", videoId: "dQw4w9WgXcQ" },
   { title: "Automatic Appointment Booking", description: "Watch the agent's calendar get filled with qualified appointments, hands-free.", videoId: "y6120QOlsfU" },
@@ -29,23 +29,21 @@ const HomePage = () => {
 
   return (
     <div>
-      <Header theme="dark" />
+      {/* CHANGE 2: Changed the theme from "dark" to "light" */}
+      <Header theme="light" />
       <main>
         <Hero />
-        <Showcase onPlayVideo={setPlayingVideoId} /> {/* Pass the function to Showcase */}
+        <Showcase onPlayVideo={setPlayingVideoId} />
         <Features />
         <FinalCta />
       </main>
       <WhatsAppWidget />
-      {/* Conditionally render the modal */}
       {playingVideoId && <VideoModal videoId={playingVideoId} onClose={() => setPlayingVideoId(null)} />}
     </div>
   );
 };
 
 // --- SUB-COMPONENTS ---
-
-// The Showcase component is updated to handle clicks
 const Showcase = ({ onPlayVideo }) => (
     <section className="showcase">
         <div className="container">
@@ -68,7 +66,6 @@ const Showcase = ({ onPlayVideo }) => (
     </section>
 );
 
-// ... (Hero, Features, FinalCta, WhatsAppWidget components remain the same)
 const Hero = () => (
   <section className="hero">
     <div className="container">
@@ -81,12 +78,16 @@ const Hero = () => (
           <div className="stat-item"><span className="stat-number">30%</span><span className="stat-label">More Qualified Leads</span></div>
           <div className="stat-item"><span className="stat-number">24/7</span><span className="stat-label">Never Miss A Lead</span></div>
         </div>
-        <div className="hero-cta-container"><a href="#trial" className="cta-button primary"><FaRocket /> Start Your 60-Day Free Trial</a></div>
+        <div className="hero-cta-container"><Link to="/book" className="cta-button primary"><FaRocket /> Start Your 60-Day Free Trial</Link></div>
       </div>
-      <div className="hero-visual"><img src="https://i.imgur.com/tE2EnqW.png" alt="AI Real Estate Agent on WhatsApp" className="hero-image" /></div>
+      <div className="hero-visual">
+          {/* The broken link is replaced with the imported image variable */}
+          <img src={heroImage} alt="AI Real Estate Agent on WhatsApp" className="hero-image" />
+      </div>
     </div>
   </section>
 );
+
 const Features = () => (
   <section className="features" id="features">
     <div className="container">
@@ -101,15 +102,17 @@ const Features = () => (
     </div>
   </section>
 );
+
 const FinalCta = () => (
   <section className="final-cta" id="trial">
     <div className="container">
       <h2>Ready To <span className="highlight-red">10x Your Lead Conversion?</span></h2>
       <p>Join hundreds of South African real estate professionals who are already using Agent Optimus to dominate their local markets.</p>
-      <a href="https://wa.me/27659030283?text=Hi! I'd like to start my 60-day free trial" target="_blank" rel="noopener noreferrer" className="cta-button primary"><FaRocket /> Start Your 60-Day Free Trial Now</a>
+      <Link to="/book" className="cta-button primary"><FaRocket /> Start Your 60-Day Free Trial Now</Link>
     </div>
   </section>
 );
+
 const WhatsAppWidget = () => (
   <a href="https://wa.me/27659030283" className="whatsapp-widget" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
 );
